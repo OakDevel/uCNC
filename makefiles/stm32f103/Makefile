@@ -84,7 +84,7 @@ BIN = $(CP) -O binary -S
 #######################################
 # cpu
 CPU = -mcpu=cortex-m3
-BOARD ?= BLUEPILL
+BOARD ?= MKS_ROBIN_NANO_V12
 
 # fpu
 # NONE for Cortex-M0/M0+/M3
