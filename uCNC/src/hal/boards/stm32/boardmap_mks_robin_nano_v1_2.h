@@ -115,18 +115,14 @@ extern "C"
 #endif
 
 //Setup PWM
-#define PWM0_BIT 0	//assigns PWM0 pin
-#define PWM0_PORT A //assigns PWM0 pin
-#define PWM0_CHANNEL 1
-#define PWM0_TIMER 2
-#define PWM1_BIT 0	//assigns PWM2 pin
-#define PWM1_PORT B //assigns PWM2 pin
-#define PWM1_CHANNEL 3
+#define PWM0_BIT 0	//assigns PWM2 pin
+#define PWM0_PORT B //assigns PWM2 pin
+#define PWM0_CHANNEL 3
+#define PWM0_TIMER 3
+#define PWM1_BIT 1	//assigns PWM3 pin
+#define PWM1_PORT B //assigns PWM3 pin
+#define PWM1_CHANNEL 4
 #define PWM1_TIMER 3
-#define PWM2_BIT 1	//assigns PWM3 pin
-#define PWM2_PORT B //assigns PWM3 pin
-#define PWM2_CHANNEL 4
-#define PWM2_TIMER 3
 
 //spindle dir
 //analog input
@@ -140,8 +136,8 @@ extern "C"
 #define ANALOG2_PORT C
 #define ANALOG2_CHANNEL 12
 
-//Setup the Step Timer used has the heartbeat for µCNC
-#define ITP_TIMER 5
+	//Setup the Step Timer used has the heartbeat for µCNC
+	// #define ITP_TIMER 5
 
 #ifdef __cplusplus
 }
