@@ -311,6 +311,12 @@ uint8_t settings_load(uint16_t address, uint8_t *__ptr, uint8_t size)
         *(__ptr++) = value;
     }
 
+    kinematics_init();
+
+#if PID_CONTROLLERS > 0
+    pid_init();
+#endif
+
 //fix step invert mask to match mirror step pins
 #ifdef ENABLE_DUAL_DRIVE_AXIS
 #ifdef DUAL_DRIVE_AXIS0
@@ -484,6 +490,17 @@ uint8_t settings_change(uint8_t setting, float value)
         g_settings.default_tool = CLAMP(value8, 0, TOOL_COUNT);
         break;
 #endif
+#if (KINEMATIC == KINEMATIC_DELTA)
+    case 106:
+        g_settings.delta_arm_length = value;
+        break;
+    case 107:
+        g_settings.delta_armbase_radius = value;
+        break;
+    case 108:
+        g_settings.delta_efector_height = value;
+        break;
+#endif
     default:
         if (setting >= 100 && setting < (100 + STEPPER_COUNT))
         {
@@ -550,6 +567,8 @@ uint8_t settings_change(uint8_t setting, float value)
     settings_save(SETTINGS_ADDRESS_OFFSET, (const uint8_t *)&g_settings, (uint8_t)sizeof(settings_t));
 #endif
 
+    kinematics_init();
+
 #if PID_CONTROLLERS > 0
     pid_init();
 #endif
@@ -580,7 +599,6 @@ void settings_erase(uint16_t address, uint8_t size)
 
     //erase crc byte that is next to data
     mcu_eeprom_putc(address, EOL);
-    mcu_eeprom_flush();
 }
 
 bool settings_check_startup_gcode(uint16_t address)
