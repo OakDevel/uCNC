@@ -36,14 +36,6 @@ extern "C"
 #define F_CPU 72000000UL
 #endif
 
-#define NO_USB_VCP
-#ifdef USB_VCP
-#undef USB_VCP
-#endif
-
-//Setup COM pins
-#define COM_PORT 3
-
 //Setup step pins
 #define STEP0_BIT 3	 //assigns STEP0 pin
 #define STEP0_PORT E //assigns STEP0 port
@@ -106,8 +98,9 @@ extern "C"
 #define PROBE_PORT A
 #define PROBE_ISR
 
-//On the STM32 always use sync TX UART (async doesn't work well)
-#ifdef COM_PORT
+//STM32 COM port
+#if (INTERFACE == INTERFACE_USART)
+#define COM_PORT 3
 #define TX_BIT 10
 #define TX_PORT B
 #define RX_BIT 11
