@@ -58,7 +58,7 @@ extern "C"
    * */
 
 #ifndef BOARD
-#define BOARD BOARD_UNO
+#define BOARD BOARD_RAMPS14
 #endif
 
   /**
@@ -75,7 +75,7 @@ extern "C"
 #endif
 
 #ifndef KINEMATIC
-#define KINEMATIC KINEMATIC_CARTESIAN
+#define KINEMATIC KINEMATIC_DELTA
 #endif
 
   /**
@@ -296,7 +296,7 @@ extern "C"
    * helps to reduce code size if features are not needed
    * */
 
-  // #define DISABLE_ALL_CONTROLS
+#define DISABLE_ALL_CONTROLS
   // #define DISABLE_ALL_LIMITS
   // #define DISABLE_PROBE
 
@@ -320,7 +320,7 @@ extern "C"
    * For pin diagnostics enables command $P
    * */
 
-  // #define ENABLE_EXTRA_SYSTEM_CMDS
+#define ENABLE_EXTRA_SYSTEM_CMDS
 
   /**
    * Compilation specific options
